@@ -7,6 +7,7 @@ public class DBConn : MonoBehaviour
 {
     private static DBConn _instance;
     public static DBConn instance { get { return _instance; } }
+
     private void Awake ()
     {
         _instance = this;
@@ -20,10 +21,10 @@ public class DBConn : MonoBehaviour
         return www;
     }
 
-    public WWW POST(String url,Dictionary<string,string> post)
+    public WWW POST (String url , Dictionary<string , string> post)
     {
         WWWForm form = new WWWForm();
-        foreach(KeyValuePair<String,String> post_arg in post )
+        foreach ( KeyValuePair<String , String> post_arg in post )
         {
             form.AddField(post_arg.Key , post_arg.Value);
         }
@@ -33,6 +34,7 @@ public class DBConn : MonoBehaviour
         return www;
     }
 
+    // 코루틴으로 돌리는 로직
     private IEnumerator WaitForRequest (WWW www)
     {
         yield return www;
