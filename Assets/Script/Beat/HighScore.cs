@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class HighScore : MonoBehaviour {
 
-    public int rank { get; set; }
+    public string rank { get; set; }
     public string playerName { get; set; }
     public string score { get; set; }
 
-    public HighScore(int rank,string playerName,string score)
+    public HighScore(string rank ,string playerName,string score)
     {
         this.rank = rank;
         this.playerName = playerName;

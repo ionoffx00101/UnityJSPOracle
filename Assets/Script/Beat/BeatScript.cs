@@ -35,15 +35,16 @@ public class BeatScript : MonoBehaviour
             // Debug.Log(jsonData["scoreList"][1]["score_name"].Value);
 
             //_output.text = "";
-            int ranksort = 0;
+            
             for ( int i = 0 ; i < jsonData["scoreList"].Count ; i++ )
             {
                 //_output.text += jsonData["scoreList"][i]["score_name"].Value + "\n";
                 //_output.text += jsonData["scoreList"][i]["score_score"].Value + "\n";
+                string Score_rank = jsonData["scoreList"][i]["score_rank"].Value;
                 string Score_name = jsonData["scoreList"][i]["score_name"].Value;
                 string Score_score = jsonData["scoreList"][i]["score_score"].Value;
 
-                highScores.Add(new HighScore(ranksort , Score_name , Score_score));
+                highScores.Add(new HighScore(Score_rank , Score_name , Score_score));
             }
         }
 
@@ -54,7 +55,7 @@ public class BeatScript : MonoBehaviour
 
             HighScore tmpScore = highScores[i];
 
-            tmpObjec.GetComponent<HighScoreScript>().SetScore(tmpScore.rank.ToString() , tmpScore.playerName , tmpScore.score);
+            tmpObjec.GetComponent<HighScoreScript>().SetScore(tmpScore.rank, tmpScore.playerName , tmpScore.score);
 
             tmpObjec.transform.SetParent(scoreParent);
             tmpObjec.GetComponent<RectTransform>().localScale = Vector3.one;
